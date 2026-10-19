@@ -1,6 +1,5 @@
 import { useState, type FormEvent } from "react";
 import {
-  Zap,
   Phone,
   Mail,
   MapPin,
@@ -14,6 +13,7 @@ import {
   X,
   Clock,
 } from "lucide-react";
+import logoImg from "./assets/logo.png";
 
 const ORANGE = "#f47a20";
 
@@ -189,15 +189,10 @@ const REVIEWS = [
   },
 ];
 
-function Logo({ light = false }: { light?: boolean }) {
+function Logo() {
   return (
     <div className="flex items-center gap-2.5">
-      <div
-        className="grid h-9 w-9 shrink-0 place-items-center rounded-full"
-        style={{ background: light ? "#ffffff" : ORANGE }}
-      >
-        <Zap size={18} className={light ? "text-[#16181c]" : "text-white"} fill="currentColor" />
-      </div>
+      <img src={logoImg} alt="" className="h-9 w-9 shrink-0 rounded-md object-contain" width={36} height={36} />
       <div className="leading-none">
         <div className="text-[17px] font-extrabold tracking-tight">ФАЗА.БЕЛ</div>
         <div className="mt-1 text-[8px] font-medium tracking-[0.18em] text-white/50">

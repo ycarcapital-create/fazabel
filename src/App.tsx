@@ -1,6 +1,5 @@
-import { useState, type FormEvent } from "react";
+import { useId, useState, type FormEvent } from "react";
 import {
-  Zap,
   Phone,
   Mail,
   MapPin,
@@ -190,14 +189,17 @@ const REVIEWS = [
 ];
 
 function Logo({ light = false }: { light?: boolean }) {
+  const maskId = useId().replace(/:/g, "");
   return (
     <div className="flex items-center gap-2.5">
-      <div
-        className="grid h-9 w-9 shrink-0 place-items-center rounded-full"
-        style={{ background: light ? "#ffffff" : ORANGE }}
-      >
-        <Zap size={18} className={light ? "text-[#16181c]" : "text-white"} fill="currentColor" />
-      </div>
+      <svg viewBox="0 0 48 48" className="h-10 w-10 shrink-0" aria-hidden="true">
+        <mask id={maskId}>
+          <circle cx="24" cy="24" r="21" fill="#fff" />
+          <circle cx="15.2" cy="24" r="4.2" fill="#000" />
+          <circle cx="32.8" cy="24" r="4.2" fill="#000" />
+        </mask>
+        <circle cx="24" cy="24" r="21" fill={light ? "#16181c" : "#ffffff"} mask={`url(#${maskId})`} />
+      </svg>
       <div className="leading-none">
         <div className="text-[17px] font-extrabold tracking-tight">ФАЗА.БЕЛ</div>
         <div className="mt-1 text-[8px] font-medium tracking-[0.18em] text-white/50">
